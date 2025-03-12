@@ -16,7 +16,12 @@ jobs:
           cache: maven
       - name: Create .env file
         run: |
-          echo "JWT_EXPIRATION=86400000" >> .env
-          echo "JWT_SECRET=secret1234567890word0987654321qwerty" >> .env
+          echo "JWT_EXPIRATION=${{secrets.JWT_EXPIRATION}}" >> .env
+          echo "JWT_SECRET=${{secrets.JWT_SECRET}}" >> .env
+          echo "DB_HOST=${{secrets.DB_HOST}}" >> .env
+          echo "DB_PORT=${{secrets.DB_PORT}}" >> .env
+          echo "DB_NAME=${{secrets.DB_NAME}}" >> .env
+          echo "DB_USER=${{secrets.DB_USER}}" >> .env
+          echo "DB_PASSWORD=${{secrets.DB_PASSWORD}}" >> .env
       - name: Build with Maven
         run: mvn --batch-mode --update-snapshots verify
