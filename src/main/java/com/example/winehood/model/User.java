@@ -18,7 +18,6 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -43,6 +42,7 @@ public class User implements UserDetails {
     private String firstName;
     @Column(nullable = false)
     private String lastName;
+    private String shippingAddress;
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "users_roles",
@@ -51,7 +51,6 @@ public class User implements UserDetails {
     @ToString.Exclude
     private Set<Role> roles = new HashSet<>();
     @Column(nullable = false)
-    @Value("false")
     private boolean isDeleted;
 
     @Override

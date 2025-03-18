@@ -17,16 +17,17 @@ public record UserRegisterRequestDto(
         @NotBlank(message = "Password may not be blank")
         @Password
         String password,
+        @Password
+        String repeatPassword,
         @NotBlank(message = "Email may not be blank")
         @Email
         String email,
         @NotBlank(message = "Repeated password may not be blank")
-        @Password
-        String repeatPassword,
         @NotBlank(message = "First name may not be blank")
         @Length(min = 1, max = 50)
         String firstName,
         @NotBlank(message = "Last name may not be blank")
         @Length(min = 1, max = 50)
-        String lastName) {
+        String lastName,
+        String shippingAddress) {
 }
