@@ -11,7 +11,7 @@ import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,9 +32,8 @@ public class ReviewController {
     @Operation(summary = "Create a new review",
             description = "Creating a new review according to the parameters")
     @PreAuthorize("hasRole('USER')")
-    public ReviewDto createReview(Authentication authentication,
-                                   @RequestBody @Valid CreateReviewRequestDto requestDto) {
-        User user = (User) authentication.getPrincipal();
+    public ReviewDto createReview(@AuthenticationPrincipal User user,
+                                  @RequestBody @Valid CreateReviewRequestDto requestDto) {
         return reviewService.save(user, requestDto);
     }
 
