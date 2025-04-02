@@ -22,11 +22,8 @@ public record UserRegisterRequestDto(
         @NotBlank(message = "Email may not be blank")
         @Email
         String email,
-        @NotBlank(message = "Repeated password may not be blank")
-        @NotBlank(message = "First name may not be blank")
         @Length(min = 1, max = 50)
         String firstName,
-        @NotBlank(message = "Last name may not be blank")
         @Length(min = 1, max = 50)
         String lastName,
         String shippingAddress) {
