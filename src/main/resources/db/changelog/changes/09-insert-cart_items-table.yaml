@@ -7,6 +7,12 @@ databaseChangeLog:
               tableName: cart_items
               columns:
                 - column:
+                    name: id
+                    type: bigint
+                    autoIncrement: true
+                    constraints:
+                      primaryKey: true
+                - column:
                     name: shopping_cart_id
                     type: bigint
                     constraints:
