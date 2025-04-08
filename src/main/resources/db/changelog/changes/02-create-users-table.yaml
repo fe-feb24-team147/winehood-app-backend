@@ -32,13 +32,9 @@ databaseChangeLog:
                 - column:
                     name: first_name
                     type: varchar(255)
-                    constraints:
-                      nullable: false
                 - column:
                     name: last_name
                     type: varchar(255)
-                    constraints:
-                      nullable: false
                 - column:
                     name: shipping_address
                     type: varchar(255)
